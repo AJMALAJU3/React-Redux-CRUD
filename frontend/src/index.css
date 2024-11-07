@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:-webkit-autofill {
+  background-color: #0000005e !important; /* or any desired color */
+  -webkit-text-fill-color: white !important; /* Set text color if needed */
+  transition: background-color 5000s ease-in-out 0s; /* Prevents background from changing */
+}
+body{
+  background-color: #090B10;
+  color: white;
+}
