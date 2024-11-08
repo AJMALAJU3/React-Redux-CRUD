@@ -34,9 +34,18 @@ function EditUser({ setEditingUser, editingUser, fetchData }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
-      <div className="bg-[#3f3f3fc4] p-6 rounded-lg shadow-lg max-w-md w-full">
-        <h3 className="text-xl font-semibold mb-4 text-center text-orange-500">Edit User</h3>
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 ">
+      <div className="bg-[#3f3f3fc4] p-6 rounded-lg shadow-lg  w-80 relative">
+      <button 
+  onClick={() => setEditingUser(null)} 
+  className="absolute top-0 right-0  text-white bg-orange-500 rounded-tr-lg rounded-bl-3xl p-3 font-bold"
+>
+  X
+</button>
+      <div className="flex gap-3 items-center mb-7">
+          <span className="bg-orange-500 p-1 rounded-lg h-7"></span>
+        <h2 className="text-2xl font-bold text-center ">Add User</h2>
+        </div>
         <div className="flex justify-center items-center">
           <img 
             src={image || profilePic} 
@@ -73,17 +82,11 @@ function EditUser({ setEditingUser, editingUser, fetchData }) {
               className="mt-1 p-2 focus:border focus:border-orange-500 outline-none rounded w-full bg-neutral-900"
             />
           </div>
-          <div className="flex justify-between">
-            <button
-              type="button"
-              onClick={() => setEditingUser(null)}
-              className="bg-gray-500 text-white p-2 rounded"
-            >
-              Close
-            </button>
+          <div className="flex justify-center">
+            
             <button
               type="submit"
-              className="bg-orange-500 text-white p-2 rounded"
+              className="bg-orange-500 text-white px-3 py-1 rounded"
             >
               Save
             </button>

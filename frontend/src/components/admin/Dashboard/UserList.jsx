@@ -5,7 +5,7 @@ import EditUser from "./EditUser";
 import AddUser from "./AddUser";
 import DeleteUser from "./DeleteUser";
 import bgImg from '../../../assets/bgimg.jpg'
-
+import { FiSettings, FiTrash } from 'react-icons/fi';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -40,7 +40,7 @@ const UserList = () => {
   
 
   return (
-    <div className={`container mx-auto p-4 rounded-lg ${ addUser || deleteModal !==''|| editingUser?'':'border-orange-500 border'}`}
+    <div className={`container mx-auto p-4 rounded-lg `}
     style={{ 
       backgroundImage: `url(${bgImg})`, 
       opacity:'20',
@@ -50,7 +50,13 @@ const UserList = () => {
       position: 'relative'  
     }}>
        <div
-    className="absolute inset-0  opacity-90 z-[-1]   bg-gradient-to-r from-black via-gray-800 to-orange-950 rounded-xl"
+    className="absolute inset-0  opacity-90 z-[-1]   bg-gradient-to-r from-black via-gray-800 to-orange-950 rounded-lg"
+  ></div>
+   <div
+    className="absolute inset-0 rounded-lg border border-orange-500 opacity-30 -z-20"
+    style={{
+      boxShadow: '0px 0px 360px 2px gray',
+    }}
   ></div>
       <div className="flex mb-6 justify-between">
         <div className="flex gap-3 items-center">
@@ -78,13 +84,14 @@ const UserList = () => {
       )}
       {addUser && <AddUser setAddUser={setAddUser} fetchData={fetchData} />}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 h-[35rem] overflow-y-auto" style={{scrollbarWidth:'none'}}>
         {filteredUsers.map((user) => (
-          <div key={user.id} className=" rounded-lg shadow-lg bg-zinc-800 p-4 text-center border-2 hover:border-orange-500 border-gray-700 ">
+          <div key={user.id} className=" rounded-lg shadow-lg bg-zinc-800 p-4 text-center border-2 max-h-[17rem]
+           hover:border-orange-500 border-gray-700 relative group transition-all duration-300 ease-in-out">
             <img
               src={user?.image || profilePic}
               alt={`${user?.name}'s profile`}
-              className="w-24 h-24 rounded-full mx-auto mb-4 bg-gray-500"
+              className="w-24 h-24 rounded-full mx-auto mb-4 bg-gray-500 group-hover:border group-hover:border-orange-500 group-hover:border-opacity-40 "
             />
             <h3 className="text-xl font-bold text-white mb-2">{user?.name}</h3>
             <p className="text-gray-300 mb-2">{user?.email}</p>
@@ -92,15 +99,26 @@ const UserList = () => {
             <div className="flex justify-around mt-3">
             <button
               onClick={() => setEditingUser(user)}
-              className="bg-gray-500 text-white px-2  rounded"
+              className="absolute bottom-0 w-10 h-10 left-0  text-white bg-gray-700 hover:w-16 hover:h-16 p-2
+              transition-all duration-300 ease-in-out group-hover:bg-orange-500 rounded-bl-lg rounded-tr-full pr-4 pt-4 font-bold items-center justify-center flex"
             >
-               edit
+               <FiSettings 
+                            className="h-5 w-5 cursor-pointer"
+
+                        />
             </button>
             <button
               onClick={() => setDeleteModal(user?.email)}
-              className="bg-red-500 text-white px-2  rounded"
-            >
-             delete
+              className="absolute bottom-0 right-0 w-10 h-10 text-white bg-gray-700 
+             hover:w-16 hover:h-16 
+             group-hover:bg-orange-500 
+             rounded-br-lg rounded-tl-full 
+             pl-4 pt-4 font-bold items-center justify-center flex
+             transition-all duration-300 ease-in-out p-2">
+             <FiTrash
+                            className="h-5 w-5 cursor-pointer"
+
+                        />
             </button>
             </div>
           </div>

@@ -30,7 +30,7 @@ function AddUser({setAddUser,fetchData}) {
         <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
             
         <div className='bg-[#64626282] relative p-7 py-14 rounded-md shadow-lg z-10 w-[20rem]'>
-        <button onClick={()=>setAddUser(false)} className='absolute top-0 right-0 text-white bg-orange-500 rounded-bl-full p-2 pb-4 pl-4 font-bold'>X</button>
+        <button onClick={()=>setAddUser(false)} className='absolute top-0 right-0 text-white bg-orange-500 hover:bg-orange-600 rounded-bl-3xl rounded-tr-lg p-2 pb-4 pl-4 font-bold'>X</button>
         <div className="flex mb-6 justify-between">
         <div className="flex gap-3 items-center">
           <span className="bg-orange-500 p-1 rounded-lg h-7"></span>
@@ -96,7 +96,7 @@ function AddUser({setAddUser,fetchData}) {
                     />
                 </div>
 
-                <button type="submit" className={`w-full py-2 bg-neutral-900 rounded-md hover:bg-black font-medium ${loading ? 'flex justify-center items-center p-2' : ''}`}>
+                <button type="submit" className={`w-full py-2 bg-orange-500 rounded-md hover:bg-orange-600 font-medium ${loading ? 'flex justify-center items-center p-2' : ''}`}>
                     {loading ? <Spinner /> : 'Submit'}
                 </button>
             </form>
